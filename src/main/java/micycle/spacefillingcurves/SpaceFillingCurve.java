@@ -17,7 +17,7 @@ public abstract class SpaceFillingCurve extends Fractal {
 	protected double area = 0;
 	protected List<Coordinate> points = null;
 
-	protected SpaceFillingCurve(int width, int height) {
+	protected SpaceFillingCurve(double width, double height) {
 		super(width, height);
 		this.points = new ArrayList<>();
 	}

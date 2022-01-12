@@ -9,10 +9,10 @@ public abstract class Fractal {
 
 	private Coordinate centroDeLaPantalla = new Coordinate(0, 0);
 	private String description;
-	protected int width, height;
+	protected double width, height;
 	private List<double[]> lineSegments;
 
-	protected Fractal(int width, int height) {
+	protected Fractal(double width, double height) {
 		this.centroDeLaPantalla.x = (width / 2d);
 		this.centroDeLaPantalla.y = (height / 2d);
 		this.width = width;

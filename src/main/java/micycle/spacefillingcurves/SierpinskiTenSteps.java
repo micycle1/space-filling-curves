@@ -4,7 +4,7 @@ import org.locationtech.jts.geom.Coordinate;
 
 public class SierpinskiTenSteps extends SpaceFillingCurve {
 
-	public SierpinskiTenSteps(int width, int height) {
+	public SierpinskiTenSteps(double width, double height) {
 		super(width, height);
 	}
 
