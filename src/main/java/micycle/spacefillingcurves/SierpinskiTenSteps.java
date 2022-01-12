@@ -3,7 +3,7 @@ package micycle.spacefillingcurves;
 import org.locationtech.jts.geom.Coordinate;
 
 public class SierpinskiTenSteps extends SpaceFillingCurve {
-	
+
 	public SierpinskiTenSteps(int width, int height) {
 		super(width, height);
 	}

@@ -6,7 +6,7 @@ import java.util.List;
 import org.locationtech.jts.geom.Coordinate;
 
 public abstract class SpaceFillingCurve extends Fractal {
-	
+
 	protected int contadorDePoints = 0;
 	protected int N = 1;
 	protected Coordinate[] todosLosPoints = new Coordinate[8 * 1024 * 1024];
@@ -18,8 +18,8 @@ public abstract class SpaceFillingCurve extends Fractal {
 	protected List<Coordinate> points = null;
 
 	protected SpaceFillingCurve(int width, int height) {
-		super(width,height);
-		this.points = new ArrayList<Coordinate>();
+		super(width, height);
+		this.points = new ArrayList<>();
 	}
 
 	protected SpaceFillingCurve(int width, int height, List<Coordinate> points) {
@@ -78,30 +78,30 @@ public abstract class SpaceFillingCurve extends Fractal {
 		if (sw) {
 			if (!this.relleno) {
 				for (int i = 1; i < this.contadorDePoints / 2; i++) {
-					this.drawLine(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+					this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
 				}
 
 				for (int i = this.contadorDePoints / 2 + 1; i < this.contadorDePoints; i++) {
-					this.drawLine(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+					this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
 				}
 
-				this.drawLine(this.todosLosPoints[0], this.todosLosPoints[this.contadorDePoints / 2]);
+				this.addLineSegment(this.todosLosPoints[0], this.todosLosPoints[this.contadorDePoints / 2]);
 			}
 		} else if (!this.relleno) {
 			for (int i = 1; i < this.contadorDePoints / 4; i++) {
-				this.drawLine(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
 			}
 
 			for (int i = this.contadorDePoints / 4 + 1; i < this.contadorDePoints / 2; i++) {
-				this.drawLine(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
 			}
 
 			for (int i = this.contadorDePoints / 2 + 1; i < 3 * this.contadorDePoints / 4; i++) {
-				this.drawLine(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
 			}
 
 			for (int i = 3 * this.contadorDePoints / 4 + 1; i < this.contadorDePoints; i++) {
-				this.drawLine(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
 			}
 		}
 	}
