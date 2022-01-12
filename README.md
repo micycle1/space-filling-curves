@@ -1,9 +1,10 @@
-# Space Filling Curves
+[![](https://jitpack.io/v/micycle1/space-filling-curves.svg)](https://jitpack.io/#micycle1/space-filling-curves)
+
+This fork improves the "library-ness" of the original project, offering a `getLineSegments()` method for access to the curve segments in other applications.
+
 ---
 
-[![Build Status](https://travis-ci.org/aaguilerav/space-filling-curves.svg?branch=master)](https://travis-ci.org/aaguilerav/space-filling-curves)
-
-<**Projects like this one are prototypes, that means that special attention was given to the problem itself rather than having a perfect software design.**>
+# Space Filling Curves
 
 There is a mathematical curious thing called "Space Filling Curves" that caught my attention several years ago, and ever since I've been studying its mathematical properties.  
 
@@ -102,18 +103,6 @@ _(Iteration 2)_
 
 ![Fig18](https://raw.githubusercontent.com/aaguilerav/space-filling-curves/master/src/main/resources/sfc-4-10d-3.png)
 _(Iteration 3)_
-
-### The Software
-
-I wrote the program that creates these curves 18 years ago aprox. but never published it until now. I used [Java Swing](http://docs.oracle.com/javase/tutorial/uiswing/) for the drawings, I'm planning to update the technology to ReactJS or another web based framework.
-
-### Compiling, Packaging and Executing the software
-
-There is a script named `compile.sh` that you can use in order to compile and package the project. Or, just execute the following command: `mvn clean compile assembly:single`.
-
-The JAR file is created at `space-filling-curves/target`, just execute a `java -jar <jar file generated>`. The GUI that will appear looks like this:
-
-![Fig19](https://raw.githubusercontent.com/aaguilerav/space-filling-curves/master/src/main/resources/welcome-screen.png)
 
 ### Next Steps
 
