@@ -33,7 +33,7 @@ public class SierpinskiThreeSteps extends SpaceFillingCurve {
 			ctemp.y = (temp * (ctemp.x - pto1.x) + pto1.y);
 			this.calcularInterseccion(a, c, ctemp, pto1, pto2);
 			if (n == 0) {
-				if (this.malla) {
+				if (this.drawTriangles) {
 					this.drawTriangle(a, b, c);
 				}
 				this.calcularMedianas(a, b, c);
@@ -64,7 +64,6 @@ public class SierpinskiThreeSteps extends SpaceFillingCurve {
 		 * a/_______|_______\c
 		 *          pm
 		 * */
-		this.perimetro = 0;
 		Coordinate a = new Coordinate(0, 0);
 		Coordinate b = new Coordinate(0, 0);
 		Coordinate c = new Coordinate(0, 0);

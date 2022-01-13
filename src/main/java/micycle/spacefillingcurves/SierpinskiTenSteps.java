@@ -60,7 +60,7 @@ public class SierpinskiTenSteps extends SpaceFillingCurve {
 			pto9.y = ((pto2.y + pto5.y) / 2);
 
 			if (n == 0) {
-				if (this.malla) {
+				if (this.drawTriangles) {
 					// try{Thread.sleep(500);}catch(Exception e){}
 					this.drawTriangle(a, b, c);
 				}
@@ -106,7 +106,6 @@ public class SierpinskiTenSteps extends SpaceFillingCurve {
 		 * a/_______|_______\c
 		 *          pm
 		 * */
-		this.perimetro = 0;
 		Coordinate a = new Coordinate(0, 0);
 		Coordinate b = new Coordinate(0, 0);
 		Coordinate c = new Coordinate(0, 0);

@@ -9,12 +9,10 @@ public abstract class SpaceFillingCurve extends Fractal {
 
 	protected int contadorDePoints = 0;
 	protected int N = 1;
-	protected Coordinate[] todosLosPoints = new Coordinate[8 * 1024 * 1024];
-	protected boolean malla = true;
+	protected List<Coordinate> todosLosPoints = new ArrayList<>(500);
+	protected boolean drawTriangles = false;
 	protected boolean relleno = false;
 	protected boolean conf = true;
-	protected double perimetro = 0;
-	protected double area = 0;
 	protected List<Coordinate> points = null;
 
 	protected SpaceFillingCurve(double width, double height) {
@@ -27,28 +25,28 @@ public abstract class SpaceFillingCurve extends Fractal {
 		this.points = points;
 	}
 
-	protected void calcularInterseccion(Coordinate a, Coordinate pm2, Coordinate c, Coordinate pm1, Coordinate mediana) {
-		double determinante;
+	protected void calcularInterseccion(Coordinate a, Coordinate pm2, Coordinate c, Coordinate pm1, Coordinate median) {
+		double determinant;
 		double[] m = new double[2];
 		double[] k = new double[2];
 
 		if ((a.x - pm2.x) == 0) {
-			m[0] = Math.pow(10, 40);
+			m[0] = 1.0E40;
 		} else {
 			m[0] = (a.y - pm2.y) / (a.x - pm2.x);
 		}
 
 		if ((c.x - pm1.x) == 0) {
-			m[1] = Math.pow(10, 40);
+			m[1] = 1.0E40;
 		} else {
 			m[1] = (c.y - pm1.y) / (c.x - pm1.x);
 		}
 
 		k[0] = m[0] * a.x - a.y;
 		k[1] = m[1] * c.x - c.y;
-		determinante = (m[1] - m[0]);
-		mediana.y = (((m[0] * k[1]) - (m[1] * k[0])) / determinante);
-		mediana.x = ((k[1] - k[0]) / determinante);
+		determinant = (m[1] - m[0]);
+		median.y = (((m[0] * k[1]) - (m[1] * k[0])) / determinant);
+		median.x = ((k[1] - k[0]) / determinant);
 	}
 
 	protected void calcularMedianas(Coordinate a, Coordinate b, Coordinate c) {
@@ -63,45 +61,45 @@ public abstract class SpaceFillingCurve extends Fractal {
 
 		this.calcularInterseccion(a, pm2, c, pm1, mediana);
 
-		this.todosLosPoints[this.contadorDePoints] = new Coordinate(mediana.x, mediana.y);
+		todosLosPoints.add(new Coordinate(mediana.x, mediana.y));
 
 		this.contadorDePoints++;
 	}
 
 	protected void drawTriangle(Coordinate a, Coordinate b, Coordinate c) {
-//		this.dibujarLinea(a, b);
-//		this.dibujarLinea(b, c);
-//		this.dibujarLinea(c, a);
+		this.addLineSegment(a, b);
+		this.addLineSegment(b, c);
+		this.addLineSegment(c, a);
 	}
 
 	protected void pintar(boolean sw) {
 		if (sw) {
 			if (!this.relleno) {
 				for (int i = 1; i < this.contadorDePoints / 2; i++) {
-					this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+					this.addLineSegment(this.todosLosPoints.get(i - 1), this.todosLosPoints.get(i));
 				}
 
 				for (int i = this.contadorDePoints / 2 + 1; i < this.contadorDePoints; i++) {
-					this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+					this.addLineSegment(this.todosLosPoints.get(i - 1), this.todosLosPoints.get(i));
 				}
 
-				this.addLineSegment(this.todosLosPoints[0], this.todosLosPoints[this.contadorDePoints / 2]);
+				this.addLineSegment(this.todosLosPoints.get(0), this.todosLosPoints.get(this.contadorDePoints / 2));
 			}
 		} else if (!this.relleno) {
 			for (int i = 1; i < this.contadorDePoints / 4; i++) {
-				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints.get(i - 1), this.todosLosPoints.get(i));
 			}
 
 			for (int i = this.contadorDePoints / 4 + 1; i < this.contadorDePoints / 2; i++) {
-				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints.get(i - 1), this.todosLosPoints.get(i));
 			}
 
 			for (int i = this.contadorDePoints / 2 + 1; i < 3 * this.contadorDePoints / 4; i++) {
-				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints.get(i - 1), this.todosLosPoints.get(i));
 			}
 
 			for (int i = 3 * this.contadorDePoints / 4 + 1; i < this.contadorDePoints; i++) {
-				this.addLineSegment(this.todosLosPoints[i - 1], this.todosLosPoints[i]);
+				this.addLineSegment(this.todosLosPoints.get(i - 1), this.todosLosPoints.get(i));
 			}
 		}
 	}
@@ -110,9 +108,5 @@ public abstract class SpaceFillingCurve extends Fractal {
 
 	public void setN(int N) {
 		this.N = N;
-	}
-
-	public void setPoints(List<Coordinate> points) {
-		this.points = points;
 	}
 }
