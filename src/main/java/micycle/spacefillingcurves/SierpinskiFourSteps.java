@@ -24,7 +24,7 @@ public class SierpinskiFourSteps extends SpaceFillingCurve {
 				if (this.drawTriangles) {
 					drawTriangle(a, b, c);
 				}
-				calcularMedianas(a, b, c);
+				calculateMedian(a, b, c);
 			}
 			if (!sw) {
 				this.render(pto2, pto1, c, n - 1, false);
@@ -85,7 +85,7 @@ public class SierpinskiFourSteps extends SpaceFillingCurve {
 			this.contadorDePoints = 0;
 			this.render(pm, a, b, n, false);
 			this.render(pm, c, b, n, false);
-			this.pintar(true);
+			this.paint(true);
 		} else {
 			this.contadorDePoints = 0;
 			a.x = (this.getCentroDeLaPantalla().x * p);
@@ -103,7 +103,7 @@ public class SierpinskiFourSteps extends SpaceFillingCurve {
 			b.x = (this.getCentroDeLaPantalla().x * p);
 			b.y = ((this.getCentroDeLaPantalla().y - this.getCentroDeLaPantalla().x / Math.sqrt(3)) * p);
 			this.render(a, b, c, n, false);
-			pintar(false);
+			paint(false);
 		}
 	}
 }

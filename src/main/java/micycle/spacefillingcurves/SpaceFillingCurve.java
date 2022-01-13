@@ -25,7 +25,7 @@ public abstract class SpaceFillingCurve extends Fractal {
 		this.points = points;
 	}
 
-	protected void calcularInterseccion(Coordinate a, Coordinate pm2, Coordinate c, Coordinate pm1, Coordinate median) {
+	protected void calculateIntersection(Coordinate a, Coordinate pm2, Coordinate c, Coordinate pm1, Coordinate median) {
 		double determinant;
 		double[] m = new double[2];
 		double[] k = new double[2];
@@ -49,7 +49,7 @@ public abstract class SpaceFillingCurve extends Fractal {
 		median.x = ((k[1] - k[0]) / determinant);
 	}
 
-	protected void calcularMedianas(Coordinate a, Coordinate b, Coordinate c) {
+	protected void calculateMedian(Coordinate a, Coordinate b, Coordinate c) {
 		Coordinate pm1 = new Coordinate(0, 0);
 		Coordinate pm2 = new Coordinate(0, 0);
 		Coordinate mediana = new Coordinate(0, 0);
@@ -59,7 +59,7 @@ public abstract class SpaceFillingCurve extends Fractal {
 		pm2.x = ((b.x + c.x) / 2);
 		pm2.y = ((b.y + c.y) / 2);
 
-		this.calcularInterseccion(a, pm2, c, pm1, mediana);
+		this.calculateIntersection(a, pm2, c, pm1, mediana);
 
 		todosLosPoints.add(new Coordinate(mediana.x, mediana.y));
 
@@ -72,7 +72,7 @@ public abstract class SpaceFillingCurve extends Fractal {
 		this.addLineSegment(c, a);
 	}
 
-	protected void pintar(boolean sw) {
+	protected void paint(boolean sw) {
 		if (sw) {
 			if (!this.relleno) {
 				for (int i = 1; i < this.contadorDePoints / 2; i++) {

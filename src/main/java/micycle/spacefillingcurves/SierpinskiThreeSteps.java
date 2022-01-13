@@ -31,12 +31,12 @@ public class SierpinskiThreeSteps extends SpaceFillingCurve {
 			pto1.y = ((b.y + c.y) / 2);
 			ctemp.x = (1);
 			ctemp.y = (temp * (ctemp.x - pto1.x) + pto1.y);
-			this.calcularInterseccion(a, c, ctemp, pto1, pto2);
+			this.calculateIntersection(a, c, ctemp, pto1, pto2);
 			if (n == 0) {
 				if (this.drawTriangles) {
 					this.drawTriangle(a, b, c);
 				}
-				this.calcularMedianas(a, b, c);
+				this.calculateMedian(a, b, c);
 			}
 			if (!sw) {
 				this.render(pto1, pto2, c, n - 1, false);
@@ -95,7 +95,7 @@ public class SierpinskiThreeSteps extends SpaceFillingCurve {
 			this.contadorDePoints = 0;
 			this.render(pm, a, b, n, false);
 			this.render(pm, c, b, n, false);
-			pintar(true);
+			paint(true);
 		} else {
 			this.contadorDePoints = 0;
 			a.x = (this.getCentroDeLaPantalla().x);
@@ -113,7 +113,7 @@ public class SierpinskiThreeSteps extends SpaceFillingCurve {
 			b.x = (this.getCentroDeLaPantalla().x);
 			b.y = (this.getCentroDeLaPantalla().y - this.getCentroDeLaPantalla().x / Math.sqrt(3));
 			this.render(a, b, c, n, false);
-			pintar(false);
+			paint(false);
 		}
 	}
 }

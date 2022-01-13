@@ -64,7 +64,7 @@ public class SierpinskiTenSteps extends SpaceFillingCurve {
 					// try{Thread.sleep(500);}catch(Exception e){}
 					this.drawTriangle(a, b, c);
 				}
-				this.calcularMedianas(a, b, c);
+				this.calculateMedian(a, b, c);
 			}
 			if (!sw) {
 				this.render(pto7, pto1, c, n - 1, false);
@@ -137,7 +137,7 @@ public class SierpinskiTenSteps extends SpaceFillingCurve {
 			this.contadorDePoints = 0;
 			this.render(pm, a, b, n, false);
 			this.render(pm, c, b, n, false);
-			pintar(true);
+			paint(true);
 		} else {
 			this.contadorDePoints = 0;
 			a.x = (this.getCentroDeLaPantalla().x);
@@ -155,7 +155,7 @@ public class SierpinskiTenSteps extends SpaceFillingCurve {
 			b.x = (this.getCentroDeLaPantalla().x);
 			b.y = (this.getCentroDeLaPantalla().y - this.getCentroDeLaPantalla().x / Math.sqrt(3));
 			this.render(a, b, c, n, false);
-			pintar(false);
+			paint(false);
 		}
 	}
 }
